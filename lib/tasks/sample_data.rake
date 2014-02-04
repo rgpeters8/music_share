@@ -18,5 +18,12 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    
+    users = User.all(limit: 6)
+    50.times do
+      description = Faker::Lorem.sentence(5)
+      title = Faker::Name.title
+      users.each { |user| user.posts.create!(description: description, title: title, youtube_id: "FVUSFVdmvYQ", category: "Other") }
+    end
   end
 end

@@ -9,5 +9,18 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+    
   end
+  
+  factory :post do
+      user
+      description "Lorem ipsum"
+      title "Test Post"
+      play_count 0
+      playlist "exampleList"
+      youtube_id "FVUSFVdmvYQ"
+      category "Other"
+      
+    end
 end
+

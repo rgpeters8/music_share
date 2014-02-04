@@ -1,0 +1,17 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  	<%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Enter title" %>
+    
+    <%= label_tag(:youtube_id, "Video ID") %>
+    <%= f.text_field :youtube_id, placeholder: "Youtube Video ID" %>
+    
+    <%= f.label :category %>
+    <%= f.select :category, [['Music','music'],['TV','tv'],['Other','other']] %>
+    
+    <%= f.text_area :description, placeholder: "Description..." %>
+      
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
