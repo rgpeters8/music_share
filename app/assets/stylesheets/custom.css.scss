@@ -62,15 +62,17 @@ p {
   line-height: 1.7em;
 }
 
+#main {
+  margin-top: 20px;
+}
+
 
 /* header */
-
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 2.0em;
   color: white;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -248,3 +250,46 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+
+/* Boostrap overrides */
+.navbar-inner {
+  background-color: #DB4D4D; /* fallback color, place your own */
+
+  /* Gradients for modern browsers, replace as you see fit */
+  background-image: -moz-linear-gradient(top, #DB4D4D, #DB4D4D);
+  background-image: -ms-linear-gradient(top, #DB4D4D, #DB4D4D);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#DB4D4D), to(#DB4D4D));
+  background-image: -webkit-linear-gradient(top, #DB4D4D, #DB4D4D);
+  background-image: -o-linear-gradient(top, #DB4D4D, #DB4D4D);
+  background-image: linear-gradient(top, #DB4D4D, #DB4D4D);
+  background-repeat: repeat-x;
+
+  /* IE8-9 gradient filter */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DB4D4D', endColorstr='#DB4D4D', GradientType=0);
+}
+
+.navbar-inner .container { height: 50px; padding-top: 10px; }
+
+.navbar .nav > li > a  {
+  color: #fff;
+  text-shadow: none;
+}
+
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+
+.btn-primary {
+  background-color: #656568;
+  background-image: none;
+}
+
+.btn-primary:hover {
+  background-color: #DB4D4D;
+  background-image: none;  
+}
+
+

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy, :play]
   before_action :correct_user,   only: :destroy
 
   def create
@@ -16,6 +16,14 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_url
+  end
+  
+  def play
+    @video = params[:youtube_id]
+    respond_to do |format|
+      format.html { redirect_to help_path }
+      format.js
+    end
   end
 
   private

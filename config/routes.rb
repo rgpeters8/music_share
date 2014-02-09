@@ -6,7 +6,7 @@ MusicShare::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :search
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy, :play]
   resources :relationships, only: [:create, :destroy]
   
   root  'static_pages#home'

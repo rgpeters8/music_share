@@ -4,5 +4,5 @@ class YoutubeController < ApplicationController
   def search
     @search = params[:term]
   end
-    
+  
 end
