@@ -39,7 +39,7 @@ describe Post do
   end
 
   describe "with content that is too long" do
-    before { @post.description = "a" * 225 }
+    before { @post.description = "a" * 425 }
     it { should_not be_valid }
   end
 end
