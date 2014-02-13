@@ -1,4 +1,10 @@
 <% provide(:title, 'Search Youtube') %>
 <h1>Search Youtube</h1>
-
-<%= @search %>
+	<ol>
+		<%= @search_results.each do |result| %>
+  			<li>
+				<%= result %>
+			</li>
+  		<% end %>	
+	<ol>
+	
