@@ -1,0 +1,6 @@
+<%= form_for(@filter) do |f| %>
+    <%= f.label :filter %>
+    <%= f.select :filter, [['Music', nil], ['Music','music'],['TV','tv'],['Movies','movies'],['Informational','Informational'],
+    ['Current Events','current events'],['Sports','sports'],['Other','other']] %>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

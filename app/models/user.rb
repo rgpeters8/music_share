@@ -27,8 +27,12 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
   
-  def feed
-    Post.from_users_followed_by(self)
+  def feed(filter)
+    if filter
+      Post.from_users_followed_by(self).where("category = ?", filter)    
+    else
+      Post.from_users_followed_by(self)  
+    end
   end
   
   def following?(other_user)
