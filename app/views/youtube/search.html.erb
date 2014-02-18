@@ -1,10 +1,6 @@
 <% provide(:title, 'Search Youtube') %>
 <h1>Search Youtube</h1>
 	<ol>
-		<%= @search_results.each do |result| %>
-  			<li>
-				<%= result %>
-			</li>
-  		<% end %>	
+		<%= render partial: 'search_result', collection: @search_results %>	
 	<ol>
 	

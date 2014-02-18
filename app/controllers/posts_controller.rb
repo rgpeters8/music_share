@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = []
-      render 'static_pages/home'
+      render 'youtube/post'
     end
   end
 
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
       format.js
     end
   end
-
+  
   private
 
     def post_params

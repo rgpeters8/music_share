@@ -7,17 +7,10 @@
       <section>
         <%= render 'shared/stats' %>
       </section>
-      <section>
-        <%= render 'shared/post_form' %>
-      </section>
     </aside>
     <div class="span8">
       <h3>Post Feed</h3>
-      <%= form_tag("/youtube/search", method: "get") do %>
-		  <%= label_tag(:term, "Search for:") %>
-		  <%= text_field_tag(:term) %>
-		  <%= submit_tag("Search") %>
-		<% end %>
+      <%= render 'shared/youtube_search_form' %>
       <%= render 'shared/feed' %>
     </div>
   </div>

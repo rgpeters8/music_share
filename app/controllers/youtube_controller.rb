@@ -44,18 +44,14 @@ class YoutubeController < ApplicationController
     search_response.data.items.each do |search_result|
       case search_result.id.kind
         when 'youtube#video'
-          @search_results.push("#{search_result.snippet.title} (#{search_result.id.videoId})")
-        when 'youtube#channel'
-          channels.push("#{search_result.snippet.title} (#{search_result.id.channelId})")
-        when 'youtube#playlist'
-          playlists.push("#{search_result.snippet.title} (#{search_result.id.playlistId})")
+          @search_results.push(search_result)
       end
     end
-    
-    puts "Videos:\n", @search_results, "\n"
-    puts "Channels:\n", channels, "\n"
-    puts "Playlists:\n", playlists, "\n"
-    
   end
   
+  def post
+    @title = params[:title]
+    @id = params[:youtube_id]
+    @post = current_user.posts.build
+  end
 end
