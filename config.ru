@@ -2,8 +2,6 @@
 require './app/controllers/api/rest_controller'
 require ::File.expand_path('../config/environment',  __FILE__)
 
-use Rack::Debugger
-use Rack::ContentLength
 run Rails.application
 
 map "/" do
