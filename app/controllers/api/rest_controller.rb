@@ -1,10 +1,15 @@
 require 'sinatra'
 
-get '/get_users' do
-  'Hello world!'
+get '/hello_world/:username/:password' do
+  "Hello #{params[:username]} #{params[:password]}!"
 end
 
-get 'api/get_users' do
-  'Hello world 2!'
+get '/authenticate/:username/:password' do
+  user = User.find_by(username: "exampleUser")
+    if user && user.authenticate("foobar")
+      "true"
+    else
+      "false"
+    end
 end
 
