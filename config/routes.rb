@@ -18,4 +18,6 @@ MusicShare::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/youtube/search',  to: 'youtube#search',  via: 'get'
   match '/youtube/post',    to: 'youtube#post', via: 'get'
+  
+  mount Sinatra => "/api"
 end
