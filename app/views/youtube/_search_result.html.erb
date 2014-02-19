@@ -1,10 +1,15 @@
 <li>
+	<img src="<%= search_result.snippet.thumbnails.default.url %>">
 	
 	<%= search_result.snippet.title %>
+	
+	<button id="<%= search_result.id.videoId %>" class="play_button" type="button">Play</button>
 	
 	<%= form_tag("/youtube/post", method: "get") do %>
 		<%= hidden_field_tag(:title, search_result.snippet.title) %>
 		<%= hidden_field_tag(:youtube_id, search_result.id.videoId) %>
 		<%= submit_tag("Post") %>
 	<% end %>
+	
+	<div id="ytapiplayer"></div>
 </li>

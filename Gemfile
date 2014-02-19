@@ -14,8 +14,10 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem 'google-api-client'
 gem 'trollop'
+
+#youtube API
+gem 'google-api-client'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
