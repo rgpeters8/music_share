@@ -19,5 +19,4 @@ MusicShare::Application.routes.draw do
   match '/youtube/search',  to: 'youtube#search',  via: 'get'
   match '/youtube/post',    to: 'youtube#post', via: 'get'
   
-  match "/api", to: 'rest', :anchor => false
 end
