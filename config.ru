@@ -3,6 +3,6 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 run Rails.application
 
-require './rest_controller'
+require './api/rest_controller'
 run Sinatra::Application
 
