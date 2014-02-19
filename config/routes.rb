@@ -19,5 +19,5 @@ MusicShare::Application.routes.draw do
   match '/youtube/search',  to: 'youtube#search',  via: 'get'
   match '/youtube/post',    to: 'youtube#post', via: 'get'
   
-  mount Sinatra => "/api"
+  match "/api" => MySinatraApp, :anchor => false
 end

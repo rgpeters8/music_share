@@ -1,9 +1,8 @@
 require 'sinatra'
 
-get '/get_users' do
-  'Hello world!'
+class RestController < Sinatra::Base
+  get '/get_users' do
+    'Hello world!'
+  end
 end
 
-get 'api/get_users' do
-  'Hello world 2!'
-end
