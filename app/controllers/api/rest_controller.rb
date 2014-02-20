@@ -1,9 +1,9 @@
 require 'sinatra'
 
-get 'api/hello_world/:username/:password' do
-  "Hello #{params[:username]} #{params[:password]}!"
+get 'hello_world' do
+  "Hello!"
 end
 
-get 'hello_world/:username/:password' do
-  "Hello #{params[:username]} #{params[:password]}! 2"
+get 'api/hello_world' do
+  "Hello api!"
 end
