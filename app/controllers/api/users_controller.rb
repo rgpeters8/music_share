@@ -10,6 +10,6 @@ get '/users/add/:username/:password/:name/:email' do
   if user.save
     "success"
   else
-    "Error saving user to datbase w/ params: #{params}"
+    user.errors
   end  
 end
