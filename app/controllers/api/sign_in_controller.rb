@@ -1,19 +1,17 @@
 require 'sinatra'
 
-get '/sign_in' do
-  "Sign in!"
-end
-
 get '/sign_in/:username/:password' do
   user = User.find_by(username: params[:username])
   if user
     if user.authenticate(params[:password])
       "true"
     else
-      "authenticationProblem"
+      "Incorrect Password for #{params[:username]}"
     end 
   else
-    "userProblem"
+    "No user found with username #{params[:username]}"
   end
 end
+
+
 
