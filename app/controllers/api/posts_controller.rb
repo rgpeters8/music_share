@@ -21,6 +21,15 @@ get '/posts/create/:username/:youtube_id/:title/:description/:category' do
   end
 end
 
+get '/posts/destroy/:post_id' do 
+  post = Post.find_by(id: params[:post_id])
+  if post.destroy
+    "success"
+  else
+    "failure"
+  end
+end
+
 get '/posts/get/:username/:page' do 
   user = User.find_by(username: params[:username])
   posts = user.posts.paginate(page: params[:page], per_page: 10)
