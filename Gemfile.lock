@@ -100,8 +100,6 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     multipart-post (2.0.0)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
     nokogiri (1.6.1-x86-mingw32)
       mini_portile (~> 0.5.0)
     pg (0.15.1-x86-mingw32)
@@ -215,6 +213,7 @@ DEPENDENCIES
   google-api-client
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
+  json
   pg (= 0.15.1)
   rails (= 4.0.2)
   rails_12factor (= 0.0.2)

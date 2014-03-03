@@ -22,6 +22,7 @@ gem 'google-api-client'
 #rest api
 gem 'sinatra'
 gem 'thin'
+gem 'json'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
