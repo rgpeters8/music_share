@@ -29,3 +29,15 @@ get '/relationships/destroy/:follower/:followed' do
   end
 end
 
+get '/relationships/get/followers/:username/:page' do
+  user = User.find_by(username: params[:username])
+  followers = user.followers.paginate(page: params[:page], per_page: 10)
+  followers.to_json
+end
+
+get '/relationships/get/followed_users/:username/:page' do
+  user = User.find_by(username: params[:username])
+  followed_users = user.followed_users.paginate(page: params[:page], per_page: 10)
+  followed_users.to_json
+end
+
