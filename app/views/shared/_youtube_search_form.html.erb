@@ -1,5 +1,5 @@
 <%= form_tag("/youtube/search", method: "get") do %>
-		  <%= label_tag(:term, "Search for:") %>
-		  <%= text_field_tag(:term) %>
-		  <%= submit_tag("Search") %>
-		<% end %>
+  <%= label_tag(:term, "Search YouTube to create a post...") %>
+  <%= text_field_tag 'term', nil, placeholder: 'Enter search term...' %>
+  <%= submit_tag("Search") %>
+<% end %>

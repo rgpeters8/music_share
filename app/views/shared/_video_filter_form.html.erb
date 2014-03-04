@@ -1,0 +1,6 @@
+<%= form_tag("/", method: "get") do %>
+  <%= label_tag 'category', 'Filter Feed by category...' %>
+  <%= select_tag(:category, options_for_select([['Show All', ""],['Music','music'],['TV','tv'],['Movies','movies'],['Informational','Informational'],
+    ['Current Events','current events'],['Sports','sports'],['Other','other']])) %>
+  <%= submit_tag("Filter") %>
+<% end %>
