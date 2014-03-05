@@ -32,7 +32,14 @@ end
 
 get '/posts/get/:username/:category/:page' do 
   user = User.find_by(username: params[:username])
-  posts = user.feed(params[:category]).paginate(page: params[:page], :per_page => 10)
+  category = params[:category]
+      
+  if category.blank?
+    posts = user.feed(nil).paginate(page: params[:page], :per_page => 10)    
+  else
+    posts = user.feed(category).paginate(page: params[:page], :per_page => 10)
+  end
+  
   posts.to_json
 end
 
