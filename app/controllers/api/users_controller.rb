@@ -14,3 +14,13 @@ get '/users/add/:username/:password/:name/:email' do
     user.errors
   end  
 end
+
+get '/users/get_by_username/:username' do
+  user = User.find_by(username: params[:username])
+  user.to_json
+end
+
+get '/users/get_by_id/:user_id' do
+  user = User.find_by(id: params[:user_id])
+  user.to_json
+end
