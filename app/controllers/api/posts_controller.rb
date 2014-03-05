@@ -30,7 +30,7 @@ get '/posts/destroy/:post_id' do
   end
 end
 
-get '/posts/get/:username/:category/:page' do 
+get '/posts/feed/:username/:category/:page' do 
   user = User.find_by(username: params[:username])
   category = params[:category]
       
