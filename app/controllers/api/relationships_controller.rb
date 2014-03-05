@@ -41,3 +41,14 @@ get '/relationships/get/followed_users/:username/:page' do
   followed_users.to_json
 end
 
+get '/relationships/follow_check/:follower/:followed' do
+  this = User.find_by(username: params[:follower])
+  other = User.find_by(username: params[:followed])
+  if this.following?(other)
+    "true"
+  else
+    "false"
+  end
+       
+end
+
