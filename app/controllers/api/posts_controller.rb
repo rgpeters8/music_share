@@ -34,7 +34,7 @@ get '/posts/get/:username/:category/:page' do
   user = User.find_by(username: params[:username])
   category = params[:category]
       
-  if category.blank?
+  if category == "All"
     posts = user.feed(nil).paginate(page: params[:page], :per_page => 10)    
   else
     posts = user.feed(category).paginate(page: params[:page], :per_page => 10)
