@@ -43,5 +43,17 @@ get '/posts/feed/:username/:category/:page' do
   posts.to_json
 end
 
+get '/posts/get/:username/:category/:page' do 
+  user = User.find_by(username: params[:username])
+  category = params[:category]
+      
+  if category == "All"
+    posts = user.posts.paginate(page: params[:page], :per_page => 10)    
+  else
+    posts = user.posts.where("category = ?", params[:category]).paginate(page: params[:page], :per_page => 10)
+  end
+  
+  posts.to_json
+end
 
 
