@@ -30,9 +30,9 @@ get '/posts/destroy/:post_id' do
   end
 end
 
-get '/posts/get/:username/:page' do 
+get '/posts/get/:username/:category/:page' do 
   user = User.find_by(username: params[:username])
-  posts = user.posts.paginate(page: params[:page], per_page: 10)
+  posts = user.feed(params[:category]).paginate(page: params[:page], :per_page => 10)
   posts.to_json
 end
 
