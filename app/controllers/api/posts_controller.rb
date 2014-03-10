@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+require 'uri'
 
 get '/posts/create/:username/:youtube_id/:title/:description/:category' do
   user = User.find_by(username: params[:username])
@@ -7,8 +8,8 @@ get '/posts/create/:username/:youtube_id/:title/:description/:category' do
     post = Post.new
     post.user_id = user.id
     post.youtube_id = params[:youtube_id]
-    post.description = params[:description]
-    post.title = params[:title]
+    post.description = params[:description].tr('+', ' ')
+    post.title = params[:title].tr('+', ' ')
     post.category = params[:category]
     
     if post.save
