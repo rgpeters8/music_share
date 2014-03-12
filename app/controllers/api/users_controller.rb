@@ -17,7 +17,11 @@ end
 
 get '/users/get_by_username/:username' do
   user = User.find_by(username: params[:username])
-  user.to_json
+  if(user != nil) 
+    user.to_json
+  else
+    "failure"
+  end
 end
 
 get '/users/get_by_id/:user_id' do
