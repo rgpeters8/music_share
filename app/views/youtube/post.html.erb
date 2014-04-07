@@ -1,8 +1,12 @@
 <%= form_for(@post) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-  	<%= f.label :title %>
-    <%= f.text_field :title, value: @title %>
+  <!-- 	<%= f.label :title %>
+    <%= f.text_field :title, value: @title %> -->
+
+    <%= f.label :title %>
+    <%= f.hidden_field :title, value: @title %>
+    <%= @title %>
     
     <%= f.hidden_field :youtube_id, value: @id %>
     
