@@ -17,13 +17,8 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to root_url
   end
-  
-  def play
-    @video = params[:youtube_id]
-    respond_to do |format|
-      format.html { redirect_to help_path }
-      format.js
-    end
+
+  def increment_play_count
   end
   
   private
