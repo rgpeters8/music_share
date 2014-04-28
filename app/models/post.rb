@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 100 } 
   validates :category, presence: true
   
-  # Returns microposts from the users being followed by the given user.
+  # Returns posts from the users being followed by the given user.
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
                          WHERE follower_id = :user_id"

@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.play_count = 0;
+
     if @post.save
       flash[:success] = "Post created!"
       redirect_to root_url
@@ -19,6 +21,10 @@ class PostsController < ApplicationController
   end
 
   def increment_play_count
+    @post = Post.find_by(id: params[:postID])
+    @post.play_count += 1
+    @post.save
+    render :text => @post.play_count
   end
   
   private

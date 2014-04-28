@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208221351) do
+ActiveRecord::Schema.define(version: 20140428220729) do
 
   create_table "posts", force: true do |t|
     t.string   "description"
     t.string   "title"
     t.integer  "user_id"
-    t.integer  "play_count"
+    t.integer  "play_count",  default: 0
     t.string   "playlist"
     t.string   "youtube_id"
     t.string   "category"

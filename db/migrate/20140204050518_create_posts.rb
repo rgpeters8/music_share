@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :description
       t.string :title
       t.integer :user_id
-      t.integer :play_count
+      t.integer :play_count, :default => 0
       t.string :playlist
       t.string :youtube_id
       t.string :category
