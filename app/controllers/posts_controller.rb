@@ -20,8 +20,20 @@ class PostsController < ApplicationController
     redirect_to root_url
   end
 
+  def like
+    @post = Post.find_by(id: params[:post_id])
+    @post.vote_by voter: current_user, :vote => 'like', :duplicate => true
+    render :text => @post.votes_for.size
+  end
+
+  def unlike
+    @post = Post.find_by(id: params[:post_id])
+    @post.unliked_by current_user
+    render :text => @post.votes_for.size
+  end
+
   def increment_play_count
-    @post = Post.find_by(id: params[:postID])
+    @post = Post.find_by(id: params[:post_id])
     @post.play_count += 1
     @post.save
     render :text => @post.play_count

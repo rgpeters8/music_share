@@ -15,6 +15,7 @@ gem 'jbuilder', '1.0.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'trollop'
+gem 'acts_as_votable'
 
 #JS runtime
 gem 'execjs'

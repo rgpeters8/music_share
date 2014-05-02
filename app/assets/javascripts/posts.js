@@ -4,7 +4,7 @@ function play(youtubeID, postID) {
 
    $.post("posts/increment_play_count", 
       { 
-         postID: postID 
+         post_id: postID 
       }, 
       function(data) {
          $("#play_count_" + postID).text(data);
@@ -17,4 +17,28 @@ function play(youtubeID, postID) {
 			$('#' + youtubeID).fadeOut();
 		});
 	});	
+}
+
+function vote(postID) {
+   var url;
+   if($("#like_" + postID).hasClass("liked")) {
+      url = "posts/unlike"
+   }
+   else {
+      url = "posts/like"
+   }
+   $.post(url, 
+      { 
+         post_id: postID 
+      }, 
+      function(data) {
+         if(url == "posts/like") {
+            $("#like_" + postID).addClass("liked");      
+         }
+         else {
+            $("#like_" + postID).removeClass("liked");   
+         }
+         $("#like_count_" + postID).text(data);
+      }
+   );   
 }
