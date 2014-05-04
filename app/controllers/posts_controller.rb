@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def like
     @post = Post.find_by(id: params[:post_id])
-    @post.vote_by voter: current_user, :vote => 'like', :duplicate => true
+    @post.liked_by current_user
     render :text => @post.votes_for.size
   end
 
