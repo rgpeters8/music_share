@@ -24,5 +24,16 @@
     <div id="video_<%= feed_item.id %>">
     </div>  	
   </div>
+
+  <%= form_tag "/posts/comment" do %>
+    <%= hidden_field_tag "post_id", feed_item.id %>
+    <%= text_area_tag "comment" %>
+    <%= submit_tag "Post Comment" %>
+  <% end %>
+
+  <% for comment in feed_item.comments do %>
+      <%= User.find_by(id: comment.user_id).username %>
+      <%= comment.comment %>
+  <% end %>
   
 </li>

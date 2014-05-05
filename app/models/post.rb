@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   acts_as_votable
-
+  acts_as_commentable
+  
   belongs_to :user
   default_scope -> { order('created_at DESC') }
   validates :user_id, presence: true

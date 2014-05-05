@@ -32,6 +32,17 @@ class PostsController < ApplicationController
     render :text => @post.votes_for.size
   end
 
+  def add_comment
+    params.permit(:comment)
+    @post = Post.find_by(id: params[:post_id])
+    @comment = @post.comments.create
+    @comment.user_id = current_user.id
+    @comment.comment = params[:comment]
+    @comment.save
+
+    redirect_to root_url
+  end
+
   def increment_play_count
     @post = Post.find_by(id: params[:post_id])
     @post.play_count += 1

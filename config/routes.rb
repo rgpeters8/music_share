@@ -21,6 +21,7 @@ MusicShare::Application.routes.draw do
   match '/youtube/post',    to: 'youtube#post', via: 'get'
   match '/posts/like', to: 'posts#like', via: 'post'
   match '/posts/unlike', to: 'posts#unlike', via: 'post'
+  match '/posts/comment', to: 'posts#add_comment', via: 'post'
   match '/posts/increment_play_count', to: 'posts#increment_play_count', via: 'post'
   match '/mobile',  to: 'static_pages#mobile' , via: 'get' 
   

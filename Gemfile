@@ -16,6 +16,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'trollop'
 gem 'acts_as_votable'
+gem 'acts_as_commentable'
 
 #JS runtime
 gem 'execjs'
