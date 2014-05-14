@@ -9,7 +9,7 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
   </span>
-  <span id="like_<%= feed_item.id %>" class="play_button glyphicon glyphicon-heart 
+  <span id="like_<%= feed_item.id %>" class="glyphicon glyphicon-heart 
     <% if current_user.voted_for? feed_item %>liked<% end %>" 
     onclick="vote(<%= feed_item.id %>)"> </span>
   <span id="like_count_<%= feed_item.id %>"><%= feed_item.votes_for.size %></span>
@@ -25,15 +25,17 @@
     </div>  	
   </div>
 
-  <%= form_tag "/posts/comment" do %>
-    <%= hidden_field_tag "post_id", feed_item.id %>
-    <%= text_area_tag "comment" %>
-    <%= submit_tag "Post Comment" %>
+  <%= form_for Comment.new, :remote => true do |f| %>
+    <%= f.hidden_field :post_id, :value => feed_item.id %>
+    <p>
+      <%= f.label :comment, "Comment" %><br />
+      <%= f.text_area :comment %>
+    </p>
+    <p><%= f.submit %></p>
   <% end %>
 
-  <% for comment in feed_item.comments do %>
-      <%= User.find_by(id: comment.user_id).username %>
-      <%= comment.comment %>
-  <% end %>
+  <div id="comments_<%= feed_item.id %>">
+    <%= render partial: 'comments/comment', collection: feed_item.comments %> 
+  </div>
   
 </li>
