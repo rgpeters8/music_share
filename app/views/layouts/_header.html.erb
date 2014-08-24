@@ -5,27 +5,27 @@
       <%= link_to image_tag('logo.png', size: "100"), root_path, :class => 'brand' %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
+          <li class="nav-item"><%= link_to "Home", root_path %></li>
           <% if signed_in? %>
-            <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "Post", youtube_search_path %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <li class="nav-item"><%= link_to "Users", users_path %></li>
+            <li class="nav-item"><%= link_to "Post", youtube_search_path %></li>
+            <li id="fat-menu" class="dropdown nav-item">
+              <a href="#" class="dropdown-toggle nav-item" data-toggle="dropdown">
                 Account <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
+              <ul class="dropdown-menu nav-item">
+                <li class="nav-item"><%= link_to "Profile", current_user %></li>
+                <li class="nav-item"><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li class="divider nav-item"></li>
+                <li class="nav-item">
+                  <%= link_to "Sign out", signout_path, id: "sign_out" %>
                 </li>
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li class="nav-item"><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
           <% end %>
-          <li><%= link_to "Help", help_path %></li>
+          <li class="nav-item"><%= link_to "Help", help_path %></li>
         </ul>
       </nav>
     </div>

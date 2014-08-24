@@ -12,8 +12,6 @@ MusicShare::Application.routes.draw do
   
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -24,5 +22,10 @@ MusicShare::Application.routes.draw do
   match '/posts/unlike', to: 'posts#unlike', via: 'post'
   match '/posts/increment_play_count', to: 'posts#increment_play_count', via: 'post'
   match '/mobile',  to: 'static_pages#mobile' , via: 'get' 
+
+  # FB Login
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
   
 end

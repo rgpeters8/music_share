@@ -17,6 +17,10 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
+      <%= debug @user %>
+      <%= debug @me %>
+      <%= debug @friends %>
+      <%= debug @suggestions %>
     </div>
   </body>
 </html>

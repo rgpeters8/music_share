@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   
   def index
-    @users = User.paginate(page: params[:page])
+    @user = User.find(session[:user_id]) if session[:user_id]
+
+    oauth_access_token = @user.oauth_token
+    @graph = Koala::Facebook::API.new(oauth_access_token)
+
+    @me = @graph.get_object("me")
+    @friends = @graph.get_connections("me", "friends")
+    uids = @friends.collect { |f| f["id"] }
+    @suggestions = User.find_all_by_uid(uids).select {|f| !@user.following?(f)}
   end
   
   def show
