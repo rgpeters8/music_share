@@ -1,15 +1,16 @@
-<li>
-	<img src="<%= search_result.snippet.thumbnails.default.url %>">
-	
-	<%= search_result.snippet.title %>
-	
-	<button id="<%= search_result.id.videoId %>" class="play_button" type="button">Play</button>
-	
-	<%= form_tag("/youtube/post", method: "get") do %>
+<li id="<%= search_result.id.videoId %>">
+	<img id="img_<%= search_result.id.videoId %>" src="<%= search_result.snippet.thumbnails.default.url %>">
+  <span class="title"><%= search_result.snippet.title %></span>
+  <span id="play_<%= search_result.id.videoId %>" class="play_button glyphicon glyphicon-play" 
+    onclick="playResult('<%= search_result.id.videoId %>')"></span>
+	<span class="glyphicon glyphicon-plus 	" onclick="$('#post_form_<%= search_result.id.videoId %>').submit();"></span>
+	<%= form_tag("/youtube/post", method: "get", id: "post_form_" + search_result.id.videoId) do %>
 		<%= hidden_field_tag(:title, search_result.snippet.title) %>
 		<%= hidden_field_tag(:youtube_id, search_result.id.videoId) %>
-		<%= submit_tag("Post") %>
 	<% end %>
-	
-	<div id="ytapiplayer"></div>
+
+  <div id="video_<%= search_result.id.videoId %>_container" class="video_container" hidden>
+    <div id="video_<%= search_result.id.videoId %>">
+    </div>  	
+  </div>
 </li>
