@@ -1,7 +1,0 @@
-.nav-item {
-   position: relative;
-   top: 30%;
-   -webkit-transform: translateY(30%);
-   -ms-transform: translateY(30%);
-   transform: translateY(30%);
-}

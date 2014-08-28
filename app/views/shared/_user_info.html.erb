@@ -1,9 +1,37 @@
-<h1>
-  <%= current_user.name %>
-</h1>
-<span>
-  <%= link_to "view my profile", current_user %>
-</span>
-<span>
-  <%= pluralize(current_user.posts.count, "post") %>
-</span>
+<div class="row panel">
+  <div class="large-2 medium-2 columns">
+      <%= image_tag(current_user.image, size: "80") %>
+  </div>
+  <div class="large-10 medium-10 columns">
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <h5>
+          <%= link_to current_user.name, current_user %>
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <div>
+          <%= pluralize(current_user.posts.count, "post") %>
+        </div>
+        <div>
+          <a href="<%= following_user_path(@user) %>">
+            <strong id="following" class="stat">
+              <%= @user.followed_users.count %>
+            </strong>
+            following
+          </a>
+        </div>
+        <div>
+          <a href="<%= followers_user_path(@user) %>">
+            <strong id="followers" class="stat">
+              <%= @user.followers.count %>
+            </strong>
+            followers
+          </a>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

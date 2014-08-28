@@ -1,25 +1,13 @@
-<!-- Latest compiled and minified CSS -->
 <% if signed_in? %>
   <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
-    <div class="span8">
-      <h3>Post Feed</h3>
-      <%= render 'shared/youtube_search_form' %>
-      <%= render 'shared/video_filter_form' %>
-      <%= render 'shared/feed' %>
-    </div>
+    <%= render 'shared/youtube_search_form' %>
+    <%= render 'shared/video_filter_form' %>
+    <%= render 'shared/feed' %>
   </div>
 <% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to streemd!</h1>
-    <div id="user-widget">
+  <div class="row">
+    <div class="large-12 medium-12 columns">
+      <h1>Welcome to streemd!</h1>
       <% if current_user %>
         Welcome <strong><%= current_user.name %></strong>!
         <%= link_to "Sign out", signout_path, id: "sign_out" %>
@@ -27,6 +15,5 @@
         <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
       <% end %>
     </div>
-    
   </div>
 <% end %>

@@ -1,31 +1,33 @@
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <%= link_to image_tag('logo.png', size: "100"), root_path, :class => 'brand' %>
-    </li>
-     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li><%= link_to "Home", root_path %></li>
-      <% if signed_in? %>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Post", youtube_search_path %></li>
-        <li class="has-dropdown">
-          <a href="#">Account</a>
-          <ul class="dropdown">
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li class="divider"></li>
-            <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-          </ul>
-        </li>
-      <% else %>
-        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-      <% end %>
+<div id="title">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <%= link_to image_tag('logo.png', size: "100"), root_path, :class => 'brand' %>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
-  </section>
-</nav>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><%= link_to "Home", root_path %></li>
+        <% if signed_in? %>
+          <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Post", youtube_search_path %></li>
+          <li class="has-dropdown">
+            <a href="#"><%= image_tag(current_user.image, size: "40") %></a>
+            <ul class="dropdown">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+</div>

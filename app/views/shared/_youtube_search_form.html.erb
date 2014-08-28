@@ -1,5 +1,19 @@
-<%= form_tag("/youtube/search", method: "get") do %>
-  <%= label_tag(:term, "Search YouTube to create a post...") %>
-  <%= text_field_tag 'term', nil, placeholder: 'Enter search term...' %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="row">
+  <div class="large-10 medium-10 large-offset-1 columns">
+    <div class="panel">
+      <div class="row">
+        <div class="large-4 medium-4 large-offset-4 columns">
+          <h3>Create Post</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-10 columns">
+          <%= text_field_tag 'term', nil, placeholder: 'Search YouTube to create a post...' %>
+        </div>
+        <div class="small-2 columns">
+          <%= submit_tag("Search", class: 'button tiny') %>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
