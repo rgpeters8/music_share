@@ -1,19 +1,23 @@
-<% if signed_in? %>
-  <div class="row">
-    <%= render 'shared/youtube_search_form' %>
-    <%= render 'shared/video_filter_form' %>
-    <%= render 'shared/feed' %>
-  </div>
-<% else %>
-  <div class="row">
-    <div class="large-12 medium-12 columns">
-      <h1>Welcome to streemd!</h1>
-      <% if current_user %>
-        Welcome <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-      <% end %>
+<div id="home" class="row">
+  <% if signed_in? %>
+    <div class="row">
+      <%= render 'shared/youtube_search_form' %>
+      <%= render 'shared/video_filter_form' %>
+      <%= render 'shared/feed' %>
     </div>
-  </div>
-<% end %>
+  <% else %>
+    <div class="row">
+      <div class="large-12 medium-12 columns text-center">
+        <h1><%= image_tag('logo_black.png', size: "300") %></h1>
+        <% if current_user %>
+          Welcome <strong><%= current_user.name %></strong>!
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+          <%= link_to ("/auth/facebook") do %>
+            <span id="sign_in" class="fi-social-facebook fi-medium button medium radius"> Login</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

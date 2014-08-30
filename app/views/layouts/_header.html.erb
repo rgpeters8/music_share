@@ -11,7 +11,11 @@
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
-        <li><%= link_to "Home", root_path %></li>
+        <li>
+          <%= link_to (root_path) do %>
+            <i class="fi-home fi-large"></i>
+          <% end %>
+        </li>
         <% if signed_in? %>
           <li><%= link_to "Users", users_path %></li>
           <li><%= link_to "Post", youtube_search_path %></li>
@@ -24,8 +28,6 @@
               <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
             </ul>
           </li>
-        <% else %>
-          <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
         <% end %>
       </ul>
     </section>

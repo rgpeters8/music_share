@@ -4,6 +4,35 @@
   padding: 1.00rem;
 }
 
+#sign_in {
+  background-color: #4c66a4;
+}
+
+.fi-large {
+  font-size: 40px;
+}
+
+.fi-medium {
+  font-size: 30px;
+}
+
+.fi-small {
+  font-size: 20px;
+}
+
+body {
+  background: url(home_bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+
+
+
+
 /* mixins, variables, etc. */
 
 /*$grayMediumLight: #eaeaea;
