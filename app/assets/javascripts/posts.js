@@ -13,9 +13,7 @@ function play(youtubeID, postID) {
 	
 	$("#video_" + postID + "_container").slideDown(function(e) {
 		swfobject.embedSWF("https://www.youtube.com/v/" + youtubeID + "?enablejsapi=1&playerapiid=ytplayer&version=3&autoplay=1",
-	    		div, "640", "390", "8", null, null, params, null, function(e) {
-			$('#' + youtubeID).fadeOut();
-		});
+	    		div, "640", "390", "8", null, null, params, null);
 	});	
 }
 
@@ -33,10 +31,12 @@ function vote(postID) {
       }, 
       function(data) {
          if(url == "posts/like") {
+            $("#like_" + postID).removeClass("unliked");      
             $("#like_" + postID).addClass("liked");      
          }
          else {
-            $("#like_" + postID).removeClass("liked");   
+            $("#like_" + postID).removeClass("liked");
+            $("#like_" + postID).addClass("unliked");      
          }
          $("#like_count_" + postID).text(data);
       }

@@ -9,7 +9,9 @@
     <%= @title %>
     
     <%= f.hidden_field :youtube_id, value: @id %>
-    
+    <%= f.hidden_field :image, value: @image %>
+    <%= @image %>
+
     <%= f.label :category %>
     <%= f.select :category, [['Music','Music'],['TV','TV'],['Movies','Movies'],['Informational','Informational'],
     ['Current Events','Current Events'],['Sports','Sports'],['Other','Other']] %>

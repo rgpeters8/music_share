@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.play_count = 0;
+    puts post_params
 
     if @post.save
       flash[:success] = "Post created!"
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :youtube_id, :category, :description)
+      params.require(:post).permit(:title, :youtube_id, :category, :description, :image)
     end
     
     def correct_user

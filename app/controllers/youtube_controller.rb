@@ -52,6 +52,7 @@ class YoutubeController < ApplicationController
   def post
     @title = params[:title]
     @id = params[:youtube_id]
+    @image = params[:image]
     @post = current_user.posts.build
   end
 end

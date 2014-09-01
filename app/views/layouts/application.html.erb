@@ -15,7 +15,7 @@
     <%= render 'layouts/shim' %>
   </head>
 
-  <body>
+  <body <% if !signed_in? %> class="bg_img" <% end %>>
     <%= render 'layouts/header' %>
     <div id="main" class="container">
       <% flash.each do |key, value| %>

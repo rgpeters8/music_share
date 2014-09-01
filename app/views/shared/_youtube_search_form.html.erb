@@ -7,12 +7,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="small-10 columns">
+        <%= form_tag("/youtube/search", method: "get") do %>
+        <div class="large-10 medium-2 columns">
           <%= text_field_tag 'term', nil, placeholder: 'Search YouTube to create a post...' %>
         </div>
-        <div class="small-2 columns">
+        <div class="large-2 medium-2 columns">
           <%= submit_tag("Search", class: 'button tiny') %>
         </div>
+        <% end %>
       </div>
     </div>  
   </div>

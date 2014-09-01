@@ -9,12 +9,6 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
       
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
       <%= f.label :password %>
       <%= f.password_field :password %>
 
@@ -24,7 +18,6 @@
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+    <%= image_tag(@user.image, size: "40") %>
   </div>
 </div>
