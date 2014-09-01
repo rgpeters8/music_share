@@ -20,8 +20,7 @@ gem 'uglifier'
 gem 'foundation-icons-sass-rails'
 
 # Pagination
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'will_paginate-foundation'
 
 # Likes
 gem 'acts_as_votable'

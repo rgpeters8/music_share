@@ -25,20 +25,26 @@ function vote(postID) {
    else {
       url = "posts/like"
    }
+
+   if(url == "posts/like") {
+      $("#like_" + postID).removeClass("unliked");      
+      $("#like_" + postID).addClass("liked");      
+   }
+   else {
+      $("#like_" + postID).removeClass("liked");
+      $("#like_" + postID).addClass("unliked");      
+   }
    $.post(url, 
       { 
          post_id: postID 
       }, 
       function(data) {
-         if(url == "posts/like") {
-            $("#like_" + postID).removeClass("unliked");      
-            $("#like_" + postID).addClass("liked");      
-         }
-         else {
-            $("#like_" + postID).removeClass("liked");
-            $("#like_" + postID).addClass("unliked");      
-         }
          $("#like_count_" + postID).text(data);
       }
    );   
+}
+
+function viewAllComments(trigger) {
+   trigger.hide();
+   trigger.siblings('.all-comments').slideDown();
 }
