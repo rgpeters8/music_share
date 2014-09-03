@@ -46,5 +46,6 @@ function vote(postID) {
 
 function viewAllComments(trigger) {
    trigger.hide();
+   trigger.siblings('.comment-preview').hide();
    trigger.siblings('.all-comments').slideDown();
 }

@@ -41,15 +41,17 @@
     </div>
   </div>
   <div class="row">
-    <div id="comments_<%= feed_item.id %>" class="large-8    medium-8 large-offset-2 columns">
+    <div id="comments-<%= feed_item.id %>" class="large-8    medium-8 large-offset-2 columns">
       <% if feed_item.comments.any?  %>
         <% if feed_item.comments.length > 1 %>
           <a href"" onclick="viewAllComments($(this)); return false;">View all <%= feed_item.comments.length %> comments</a>
           <div class="all-comments hide">
-            <%= render partial: 'comments/comment', collection: feed_item.comments[0, feed_item.comments.length - 2] %> 
+            <%= render partial: 'comments/comment', collection: feed_item.comments %> 
           </div>
         <% end %>
-      <%= render partial: 'comments/comment', object: feed_item.comments[feed_item.comments.length - 1] %> 
+        <div class="comment-preview">
+          <%= render partial: 'comments/comment', object: feed_item.comments[feed_item.comments.length - 1] %> 
+        </div>
       <% end %>
     </div>
   </div>
@@ -58,7 +60,7 @@
       <%= form_for Comment.new, :remote => true do |f| %>
         <%= f.hidden_field :post_id, :value => feed_item.id %>
         <p>
-          <%= f.text_area :comment %>
+          <%= f.text_area :comment, :id => "new-comment-"+ feed_item.id.to_s %>
         </p>
         <p><%= f.submit class: "button tiny right" %></p>
       <% end %>
