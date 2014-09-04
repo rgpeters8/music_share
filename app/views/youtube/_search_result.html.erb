@@ -1,16 +1,37 @@
-<li id="<%= search_result.id.videoId %>">
-	<img id="img_<%= search_result.id.videoId %>" src="<%= search_result.snippet.thumbnails.default.url %>">
-  <span class="title"><%= search_result.snippet.title %></span>
-  <span id="play_<%= search_result.id.videoId %>" class="play_button fi-play fi-medium" 
-    onclick="playResult('<%= search_result.id.videoId %>')"></span>
-	<span class="fi-plus fi-medium" onclick="$('#post_form_<%= search_result.id.videoId %>').submit();"></span>
-	<%= form_tag("/youtube/post", method: "get", id: "post_form_" + search_result.id.videoId) do %>
-		<%= hidden_field_tag(:title, search_result.snippet.title) %>
-    <%= hidden_field_tag(:image, search_result.snippet.thumbnails.high.url) %>
-		<%= hidden_field_tag(:youtube_id, search_result.id.videoId) %>
-	<% end %>
-  <div id="video_<%= search_result.id.videoId %>_container" class="video_container" hidden>
-    <div id="video_<%= search_result.id.videoId %>">
-    </div>  	
+<li id="<%= search_result.id.videoId %>" class="feed-item">
+  <div class="post-overview row">
+    <div class="large-2 medium-2 columns">
+      <%= image_tag(search_result.snippet.thumbnails.high.url, class: "post_img") %>  
+    </div>
+    <div class="large-8 medium-8 columns">
+      <ul class="post-info-ul">
+        <li><%= search_result.snippet.title %></li>
+        <li><%= search_result.snippet.description %></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="large-2 medium-2 columns">
+      <ul class="inline-list text-center right">
+        <li>
+          <span class="play_button post-action fi-play fi-medium" 
+            onclick="playResult('<%= search_result.id.videoId %>')"></span>
+        </li>
+        <li>
+          <span class="post-action fi-plus fi-medium" onclick="$('#post_form_<%= search_result.id.videoId %>').submit();"></span>
+        </li>
+      </ul>
+    </div>
   </div>
+  <div class="row">
+    <div class="large-12 medium-12 columns">
+      <div id="video_<%= search_result.id.videoId %>_container" class="video_container flex-video" hidden>
+        <div id="video_<%= search_result.id.videoId %>">
+        </div>    
+      </div>
+    </div>
+  </div>
+  <%= form_tag("/youtube/post", method: "get", id: "post_form_" + search_result.id.videoId) do %>
+    <%= hidden_field_tag(:title, search_result.snippet.title) %>
+    <%= hidden_field_tag(:youtube_id, search_result.id.videoId) %>
+  <% end %> 
 </li>

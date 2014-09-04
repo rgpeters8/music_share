@@ -1,5 +1,5 @@
 function play(youtubeID, postID) {
-	var params = { allowScriptAccess: "always"};
+	var params = {allowScriptAccess: 'always', allowfullscreen: 'true'};
 	var div = "video_" + postID;
 
    $.post("posts/increment_play_count", 

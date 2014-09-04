@@ -35,6 +35,7 @@ class YoutubeController < ApplicationController
       :parameters => opts
     )
     
+    @api = youtube;
     @search_results = []
     channels = []
     playlists = []
@@ -44,6 +45,12 @@ class YoutubeController < ApplicationController
     search_response.data.items.each do |search_result|
       case search_result.id.kind
         when 'youtube#video'
+          # videos = client.execute!(
+          #   :api_method => youtube.videos.list,
+          #   :parameters => {:id => search_result.id.videoId, :part => 'statistics'}
+          # )
+          # search_result.class.module_eval { attr_accessor :stats}
+          # search_result.stats = videos.data.items[0]
           @search_results.push(search_result)
       end
     end

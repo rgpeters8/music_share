@@ -1,6 +1,31 @@
 <% provide(:title, 'Search Youtube') %>
-<h1>Search Youtube</h1>
-	<ol>
-		<%= render partial: 'search_result', collection: @search_results %>	
-	<ol>
-	
+<%= render 'shared/youtube_search_form' %>
+<div class="row">
+  <div class="large-12 medium-12 columns">
+    <div class="panel">
+      <div class="row">
+        <div class="large-4 medium-4 large-offset-4 text-center columns">
+          <h3>Search Results</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 medium-12 columns">
+          <% if @search_results.any? %>
+            <ol class="posts">
+              <%= render partial: 'search_result', collection: @search_results %>
+            </ol>
+          <% else %>
+            <div class="row">
+              <div class="large-4 medium-4 large-offset-4 columns">
+                No results
+              </div>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
