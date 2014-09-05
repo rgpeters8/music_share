@@ -7,7 +7,6 @@
       <ul class="post-info-ul">
         <li><%= search_result.snippet.title %></li>
         <li><%= search_result.snippet.description %></li>
-        <li></li>
       </ul>
     </div>
     <div class="large-2 medium-2 columns">
@@ -17,7 +16,9 @@
             onclick="playResult('<%= search_result.id.videoId %>')"></span>
         </li>
         <li>
-          <span class="post-action fi-plus fi-medium" onclick="$('#post_form_<%= search_result.id.videoId %>').submit();"></span>
+          <a href="#"  data-reveal-id="modal-<%= search_result.id.videoId %>">
+            <span class="post-action fi-plus fi-medium"></span>
+          </a>
         </li>
       </ul>
     </div>
@@ -30,8 +31,41 @@
       </div>
     </div>
   </div>
-  <%= form_tag("/youtube/post", method: "get", id: "post_form_" + search_result.id.videoId) do %>
-    <%= hidden_field_tag(:title, search_result.snippet.title) %>
-    <%= hidden_field_tag(:youtube_id, search_result.id.videoId) %>
-  <% end %> 
+  <div id="modal-<%= search_result.id.videoId %>" class="reveal-modal medium" data-reveal>
+    <%= form_for(current_user.posts.build) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="row">
+        <div class="large-2 medium-2 columns">
+          <%= f.hidden_field :youtube_id, value: search_result.id.videoId %>
+          <%= f.hidden_field :image, value: search_result.snippet.thumbnails.high.url %>
+          <%= image_tag(search_result.snippet.thumbnails.high.url, class: "post_img") %>  
+        </div>
+        <div class="large-10 medium-10 columns">
+          <div class="row">
+            <div class="large-12 medium-12 columns">
+              <%= f.hidden_field :title, value: search_result.snippet.title %> 
+              <%= search_result.snippet.title %> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-4 medium-4 columns end">
+              <%= f.select :category, [['Music','Music'],['TV','TV'],['Movies','Movies'],['Informational','Informational'],
+              ['Current Events','Current Events'],['Sports','Sports'],['Other','Other']] %> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-10 medium-10 columns">
+              <%= f.text_area :description, placeholder: "Description..." %>
+            </div>
+          </div>
+                <div class="row">
+        <div class="large-12 medium-12 columns">
+          <%= f.submit "Post", class: "button rounded" %>
+        </div>
+      </div>
+        </div>
+      </div>
+    <% end %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 </li>

@@ -3,13 +3,13 @@
     <div class="panel">
       <div class="row">
         <div class="large-4 medium-4 large-offset-4 text-center columns">
-          <h3>Create Post</h3>
+          <h3>Search YouTube</h3>
         </div>
       </div>
       <div class="row">
         <%= form_tag("/youtube/search", method: "get") do %>
         <div class="large-10 medium-2 columns">
-          <%= text_field_tag 'term', nil, placeholder: 'Search YouTube to create a post...' %>
+          <%= text_field_tag 'term', nil, placeholder: 'Enter a search term...' %>
         </div>
         <div class="large-2 medium-2 columns">
           <%= submit_tag("Search", class: 'button tiny') %>
