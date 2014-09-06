@@ -16,8 +16,17 @@
   <body <% if !signed_in? %> class="bg_img" <% end %>>
     <%= render 'layouts/header' %>
     <div id="main" class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% flash.each do |name, msg| %>
+        <div class="row">
+          <div class="large-10 medium-10 large-offset-1 columns">
+            <% if msg.is_a?(String) %>
+              <div data-alert class="alert-box round success">
+                <%= content_tag :div, msg %>
+                <a href="#" class="close">&times;</a>
+              </div>
+            <% end %>  
+          </div>
+        </div>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
