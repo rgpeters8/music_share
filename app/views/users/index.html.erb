@@ -1,6 +1,12 @@
 <% provide(:title, 'All users') %>
-<h1>Who to Follow</h1>
+<div class="row">
+   <div class="large-12 medium-12 columns">
+      <div class="panel">
+         <h3>Who to Follow</h3>
+         <ul>
+            <%= render @suggestions %>
+         </ul>
+      </div>   
+   </div>
+</div>
 
-<ul class="users">
-  <%= render @suggestions %>
-</ul>

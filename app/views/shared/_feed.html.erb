@@ -1,7 +1,7 @@
 <% if @feed_items.any? %>
   <%= will_paginate @feed_items, renderer: FoundationPagination::Rails %>
-  <ol class="posts">
+  <ul class="posts">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
-  </ol>
+  </ul>
   <%= will_paginate @feed_items, renderer: FoundationPagination::Rails %>
 <% end %>

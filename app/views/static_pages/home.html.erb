@@ -2,16 +2,14 @@
   <% if signed_in? %>
     <div class="row">
       <%= render 'shared/youtube_search_form' %>
-      <div class="panel">
         <%= render 'shared/video_filter_form' %>
         <%= render 'shared/feed' %>
-      </div>
     </div>
   <% else %>
     <div class="row">
       <div class="large-12 medium-12 columns text-center">
         <h1><%= image_tag('logo_black.png', size: "300") %></h1>
-        <%= link_to ("/auth/facebook") do %>
+        <%= link_to ("/auth/facebook?display=popup&scope=user_friends") do %>
           <span id="sign_in" class="fi-social-facebook fi-medium button medium round"> Login</span>
         <% end %>
       </div>

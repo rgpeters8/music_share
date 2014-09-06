@@ -1,25 +1,42 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-        <%= render 'shared/stats' %>
-      </section>
-  </aside>
-  
-  <div class="span8">
-  	<%= render 'follow_form' if signed_in? %>
+  <div class="large-1 medium-1 columns">
+    <%= image_tag(@user.image) %>
+  </div>
+  <div class="large-8 medium-8 columns">
+    <ul class="post-info-ul">
+      <li><%= @user.name %></li>
+      <li>Posts (<%= @user.posts.count %>)</li>
+      <li>
+        <a href="<%= following_user_path(@user) %>">
+          <strong id="following" class="stat">
+            <%= @user.followed_users.count %>
+          </strong>
+          following
+        </a>
+        <a href="<%= followers_user_path(@user) %>">
+          <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+          </strong>
+          followers
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="large-3 medium-3 columns text-right">
+    <%= render 'follow_form' if signed_in? %>
+  </div>
+</div>
+
+<div class="row">
+  <div class"large-12 medium-12 columns">
     <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
       <%= will_paginate @feed_items %>
-	  <ol class="posts">
-	    <%= render partial: 'shared/feed_item', collection: @feed_items %>
-	  </ol>
-  	<%= will_paginate @feed_items %>
+    <ol class="posts">
+      <%= render partial: 'shared/feed_item', collection: @feed_items %>
+    </ol>
+    <%= will_paginate @feed_items %>
     <% end %>
   </div>
 </div>

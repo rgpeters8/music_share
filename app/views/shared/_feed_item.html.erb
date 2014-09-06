@@ -1,69 +1,72 @@
-<li id="<%= feed_item.id %>" class="feed-item">
-  <div class="post-overview row">
-    <div class="large-2 medium-2 columns">
-      <%= image_tag(feed_item.image, class: "post_img") %>  
-    </div>
-    <div class="large-8 medium-8 columns">
-      <ul class="post-info-ul">
-        <li><%= link_to feed_item.user.name, feed_item.user %></li>
-        <li><%= feed_item.title %></li>
-        <li>Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</li>
-        <li><%= feed_item.description %></li>
-      </ul>
-    </div>
-    <div class="large-2 medium-2 columns">
-      <ul class="inline-list text-center right">
-        <li>
-          <span id="<%= feed_item.youtube_id %>" class="play_button post-action fi-play fi-medium" 
-            onclick="play('<%= feed_item.youtube_id %>', '<%= feed_item.id %>')"></span>
-          <span id="play_count_<%= feed_item.id %>"><%= feed_item.play_count %></span>
-        </li>
-        <li>
-          <span id="like_<%= feed_item.id %>" class="post-action fi-heart fi-medium 
-          <% if current_user.voted_for? feed_item %>liked <%else%> unliked <% end %>" 
-          onclick="vote(<%= feed_item.id %>)"> </span>
-          <span id="like_count_<%= feed_item.id %>"><%= feed_item.votes_for.size %></span>
-        </li>
-        <li>
-          <% if current_user?(feed_item.user) %>
-            <%= link_to raw("<span class='post-action fi-trash fi-medium'></span>"), feed_item, method: :delete, data: { confirm: "Are you sure you wish to delete this post?" }, title: feed_item.title %>     
-          <% end %>  
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-12 medium-12 columns">
-      <div id="video_<%= feed_item.id %>_container" class="video_container flex-video" hidden>
-        <div id="video_<%= feed_item.id %>">
-        </div>    
+<div class="panel">
+  <li id="<%= feed_item.id %>" class="feed-item">
+    <div class="post-overview row">
+      <div class="large-2 medium-2 columns">
+        <%= image_tag(feed_item.image, class: "post_img") %>  
+      </div>
+      <div class="large-8 medium-8 columns">
+        <ul class="post-info-ul">
+          <li><%= link_to feed_item.user.name, feed_item.user %></li>
+          <li><%= feed_item.title %></li>
+          <li>Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</li>
+          <li><%= feed_item.description %></li>
+        </ul>
+      </div>
+      <div class="large-2 medium-2 columns">
+        <ul class="inline-list text-center right">
+          <li>
+            <span id="<%= feed_item.youtube_id %>" class="play_button post-action fi-play fi-medium" 
+              onclick="play('<%= feed_item.youtube_id %>', '<%= feed_item.id %>')"></span>
+            <span id="play_count_<%= feed_item.id %>"><%= feed_item.play_count %></span>
+          </li>
+          <li>
+            <span id="like_<%= feed_item.id %>" class="post-action fi-heart fi-medium 
+            <% if current_user.voted_for? feed_item %>liked <%else%> unliked <% end %>" 
+            onclick="vote(<%= feed_item.id %>)"> </span>
+            <span id="like_count_<%= feed_item.id %>"><%= feed_item.votes_for.size %></span>
+          </li>
+          <li>
+            <% if current_user?(feed_item.user) %>
+              <%= link_to raw("<span class='post-action fi-trash fi-medium'></span>"), feed_item, method: :delete, data: { confirm: "Are you sure you wish to delete this post?" }, title: feed_item.title %>     
+            <% end %>  
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div id="comments-<%= feed_item.id %>" class="large-8    medium-8 large-offset-2 columns">
-      <% if feed_item.comments.any?  %>
-        <% if feed_item.comments.length > 1 %>
-          <a href"" onclick="viewAllComments($(this)); return false;">View all <%= feed_item.comments.length %> comments</a>
-          <div class="all-comments hide">
-            <%= render partial: 'comments/comment', collection: feed_item.comments %> 
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <div id="video_<%= feed_item.id %>_container" class="video_container flex-video" hidden>
+          <div id="video_<%= feed_item.id %>">
+          </div>    
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="comments-<%= feed_item.id %>" class="large-8    medium-8 large-offset-2 columns">
+        <% if feed_item.comments.any?  %>
+          <% if feed_item.comments.length > 1 %>
+            <a href"" onclick="viewAllComments($(this)); return false;">View all <%= feed_item.comments.length %> comments</a>
+            <div class="all-comments hide">
+              <%= render partial: 'comments/comment', collection: feed_item.comments %> 
+            </div>
+          <% end %>
+          <div class="comment-preview">
+            <%= render partial: 'comments/comment', object: feed_item.comments[feed_item.comments.length - 1] %> 
           </div>
         <% end %>
-        <div class="comment-preview">
-          <%= render partial: 'comments/comment', object: feed_item.comments[feed_item.comments.length - 1] %> 
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="large-8 medium-8 large-offset-2 columns">
-      <%= form_for Comment.new, :remote => true do |f| %>
-        <%= f.hidden_field :post_id, :value => feed_item.id %>
-        <p>
-          <%= f.text_area :comment, :id => "new-comment-"+ feed_item.id.to_s %>
-        </p>
-        <p><%= f.submit class: "button tiny right" %></p>
-      <% end %>
+    <div class="row">
+      <div class="large-8 medium-8 large-offset-2 columns">
+        <%= form_for Comment.new, :remote => true do |f| %>
+          <%= f.hidden_field :post_id, :value => feed_item.id %>
+          <p>
+            <%= f.text_area :comment, :id => "new-comment-"+ feed_item.id.to_s %>
+          </p>
+          <p><%= f.submit class: "button tiny right" %></p>
+        <% end %>
+      </div>
     </div>
-  </div>
-</li>
+  </li>
+</div>
+  
