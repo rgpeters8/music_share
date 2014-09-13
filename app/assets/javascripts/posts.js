@@ -20,10 +20,10 @@ function play(youtubeID, postID) {
 function vote(postID) {
    var url;
    if($("#like_" + postID).hasClass("liked")) {
-      url = "/posts/unlike"
+      url = "/posts/unlike";
    }
    else {
-      url = "/posts/like"
+      url = "/posts/like";
    }
 
    if(url == "/posts/like") {
