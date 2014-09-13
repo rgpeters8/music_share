@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901062249) do
+ActiveRecord::Schema.define(version: 20140913205527) do
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140901062249) do
     t.string   "remember_token"
     t.boolean  "admin",            default: false
     t.string   "provider"
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "image"
