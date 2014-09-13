@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  fuzzily_searchable :name
   acts_as_voter
   
   has_many :posts, dependent: :destroy

@@ -54,6 +54,7 @@ GEM
     daemons (1.1.9)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
     extlib (0.9.16)
@@ -73,6 +74,8 @@ GEM
     foundation-rails (5.2.3.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    fuzzily (0.3.2)
+      activerecord (>= 2.3.17)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -110,6 +113,8 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     multipart-post (2.0.0)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     nokogiri (1.6.1-x86-mingw32)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -239,6 +244,7 @@ DEPENDENCIES
   faker (= 1.1.2)
   foundation-icons-sass-rails
   foundation-rails
+  fuzzily
   google-api-client
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)

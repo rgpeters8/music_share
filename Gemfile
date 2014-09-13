@@ -13,6 +13,9 @@ gem 'trollop'
 gem 'jbuilder', '1.0.2'
 gem 'foundation-rails'
 
+#fuzzy search
+gem 'fuzzily'
+
 #assets
 gem 'sass-rails', "~> 4.0.1"
 gem 'coffee-rails', "~> 4.0.1"

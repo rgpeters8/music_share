@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @search_results = User.where('name LIKE ?', "%#{params[:term]}%")
+    @search_results = User.find_by_fuzzy_name(params[:term], :limit => 10)
     respond_with @search_results
   end
   

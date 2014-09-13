@@ -1,6 +1,6 @@
-<% provide(:title, 'All users') %>
+<% provide(:title, 'People') %>
 <div class="row">
-    <div class="large-8 medium-8 columns">
+    <div class="large-8 medium-8 <% if @suggestions.blank? %> large-offset-2 <% end %> columns">
      <div class="panel">
        <div class="row">
          <div class="large-4 medium-4 large-offset-4 text-center columns">
@@ -23,14 +23,16 @@
        </div>
      </div>  
    </div>
-   <div class="large-4 medium-4 columns">
+  <% if @suggestions.any? %>
+    <div class="large-4 medium-4 columns">
       <div class="panel">
-         <div class="text-center"><h3>Who to Follow</h3></div>
-         <ul>
+        <div class="text-center"><h3>Who to Follow</h3></div>
+          <ul>
             <%= render @suggestions %>
-         </ul>
+          </ul>
       </div>   
    </div>
+  <% end %>    
 </div>
 
 <div class="row">
