@@ -1,0 +1,7 @@
+<% if @search_results.blank? %>
+   <div class="text-center">No users found</div>
+<% else %> 
+   <ul>
+      <%= render @search_results %>
+   </ul>
+<% end %>

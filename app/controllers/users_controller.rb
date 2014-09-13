@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html, :js
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
@@ -13,6 +14,11 @@ class UsersController < ApplicationController
     @friends = @graph.get_connections("me", "friends")
     uids = @friends.collect { |f| f["id"] }
     @suggestions = User.find_all_by_uid(uids).select {|f| !@user.following?(f)}
+  end
+
+  def search
+    @search_results = User.where('name LIKE ?', "%#{params[:term]}%")
+    respond_with @search_results
   end
   
   def show

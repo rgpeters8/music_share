@@ -15,6 +15,7 @@ MusicShare::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/home/filter', to: 'static_pages#home_filtered', via: 'get'
+  match '/user/search',  to: 'users#search',  via: 'get'
   match '/youtube/search',  to: 'youtube#search',  via: 'get'
   match '/youtube/post',    to: 'youtube#post', via: 'get'
   match '/posts/like', to: 'posts#like', via: 'post'

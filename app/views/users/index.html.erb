@@ -1,12 +1,41 @@
 <% provide(:title, 'All users') %>
 <div class="row">
-   <div class="large-12 medium-12 columns">
+    <div class="large-8 medium-8 columns">
+     <div class="panel">
+       <div class="row">
+         <div class="large-4 medium-4 large-offset-4 text-center columns">
+           <h3>Search Users</h3>
+         </div>
+       </div>
+       <div class="row">
+         <%= form_tag("/user/search", method: "get", remote: true) do %>
+         <div class="large-10 medium-10 columns">
+           <%= text_field_tag 'term', nil, placeholder: "Enter a user's name" %>
+         </div>
+         <div class="large-2 medium-2 columns">
+           <%= submit_tag("Search", class: 'button tiny') %>
+         </div>
+         <% end %>
+       </div>
+       <div class="row">
+         <div id="search-results" class="large-12 medium-12 columns">
+         </div>
+       </div>
+     </div>  
+   </div>
+   <div class="large-4 medium-4 columns">
       <div class="panel">
-         <h3>Who to Follow</h3>
+         <div class="text-center"><h3>Who to Follow</h3></div>
          <ul>
             <%= render @suggestions %>
          </ul>
       </div>   
    </div>
 </div>
+
+<div class="row">
+  
+</div>
+
+
 
