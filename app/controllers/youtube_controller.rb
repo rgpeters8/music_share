@@ -26,7 +26,6 @@ class YoutubeController < ApplicationController
     
     # Call the search.list method to retrieve results matching the specified
     # query term.
-    opts[:part] = 'id,snippet'
     search_response = client.execute!(
       :api_method => youtube.search.list,
     )
