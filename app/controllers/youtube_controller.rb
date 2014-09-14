@@ -18,10 +18,7 @@ class YoutubeController < ApplicationController
     
   def search
     term = params[:term]
-    opts = Trollop::options do
-      opt :q, 'Search term', :type => String, :default => term
-      opt :maxResults, 'Max results', :type => :int, :default => 25
-    end
+    
     
     client = Google::APIClient.new(:key => DEVELOPER_KEY,
                                    :authorization => nil)
@@ -32,7 +29,6 @@ class YoutubeController < ApplicationController
     opts[:part] = 'id,snippet'
     search_response = client.execute!(
       :api_method => youtube.search.list,
-      :parameters => opts
     )
     
     @api = youtube;
