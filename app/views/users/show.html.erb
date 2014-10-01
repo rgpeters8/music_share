@@ -33,10 +33,10 @@
   <div class"large-12 medium-12 columns">
     <% if @user.posts.any? %>
       <%= will_paginate @feed_items %>
-    <ul class="posts">
-      <%= render partial: 'shared/feed_item', collection: @feed_items %>
-    </ul>
-    <%= will_paginate @feed_items %>
+      <ul class="posts">
+        <%= render partial: 'shared/feed_item', collection: @feed_items %>
+      </ul>
+      <%= will_paginate @feed_items %>
     <% end %>
   </div>
 </div>

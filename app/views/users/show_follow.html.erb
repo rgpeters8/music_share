@@ -1,25 +1,39 @@
 <% provide(:title, @title) %>
+
 <div class="row">
-  <aside class="span4">
-    <section>
-      <%= gravatar_for @user %>
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Posts:</b> <%= @user.posts.count %></span>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-          <% end %>
-        </div>
-      <% end %>
-    </section>
-  </aside>
-  <div class="span8">
+  <div class="large-1 medium-1 columns">
+    <%= image_tag(@user.image) %>
+  </div>
+  <div class="large-8 medium-8 columns">
+    <ul class="post-info-ul">
+      <li><%= @user.name %></li>
+      <li>Posts (<%= @user.posts.count %>)</li>
+      <li>
+        <a href="<%= following_user_path(@user) %>">
+          <strong id="following" class="stat">
+            <%= @user.followed_users.count %>
+          </strong>
+          following
+        </a>
+        <a href="<%= followers_user_path(@user) %>">
+          <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+          </strong>
+          followers
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="large-3 medium-3 columns text-right">
+    <%= render 'follow_form' if signed_in? %>
+  </div>
+</div>
+
+<div class="row">
+  <div class"large-12 medium-12 columns">
     <h3><%= @title %></h3>
     <% if @users.any? %>
+      <%= will_paginate %>
       <ul class="users">
         <%= render @users %>
       </ul>
