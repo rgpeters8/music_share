@@ -22,16 +22,10 @@
               <i class="fi-torsos-all fi-large"></i>
             <% end %>
           </li>
-          <li>
-            <%= link_to (youtube_search_path) do %>
-              <i class="fi-video fi-large"></i>
-            <% end %>
-          </li>
           <li class="has-dropdown">
             <a href="#"><%= image_tag(current_user.image, size: "40") %></a>
             <ul class="dropdown">
               <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
             </ul>
