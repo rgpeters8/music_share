@@ -21,6 +21,8 @@ class YoutubeController < ApplicationController
     opts = Trollop::options do
       opt :q, 'Search term', :type => String, :default => term
       opt :maxResults, 'Max results', :type => :int, :default => 25
+      opt :p
+      opt :e
     end
     
     client = Google::APIClient.new(:key => DEVELOPER_KEY,
