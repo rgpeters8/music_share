@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="large-10 medium-10 large-offset-1 columns">
+  <div class="medium-10 small-12 medium-offset-1 columns">
     <div class="panel">
       <div class="row">
-        <div class="large-4 medium-4 large-offset-4 text-center columns">
+        <div class="medium-4 medium-offset-4 text-center columns">
           <h3>Search YouTube</h3>
         </div>
       </div>
       <div class="row">
         <%= form_tag("/youtube/search", method: "get") do %>
-        <div class="large-10 medium-2 columns">
+        <div class="medium-10 columns">
           <%= text_field_tag 'term', nil, placeholder: 'Enter a search term...' %>
         </div>
-        <div class="large-2 medium-2 columns">
+        <div class="medium-2 columns">
           <%= submit_tag("Search", class: 'button tiny') %>
         </div>
         <% end %>

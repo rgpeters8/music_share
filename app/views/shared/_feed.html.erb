@@ -1,7 +1,11 @@
 <% if @feed_items.any? %>
-  <%= will_paginate @feed_items, renderer: FoundationPagination::Rails %>
-  <ul class="posts">
-    <%= render partial: 'shared/feed_item', collection: @feed_items %>
-  </ul>
-  <%= will_paginate @feed_items, renderer: FoundationPagination::Rails %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= will_paginate @feed_items, renderer: FoundationPagination::Rails %>
+      <ul>
+        <%= render partial: 'shared/feed_item', collection: @feed_items %>
+      </ul>
+      <%= will_paginate @feed_items, renderer: FoundationPagination::Rails %>
+    </div>
+  </div>
 <% end %>

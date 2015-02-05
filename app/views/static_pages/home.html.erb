@@ -1,18 +1,14 @@
-<div class="row">
-  <% if signed_in? %>
-    <div class="row">
-      <%= render 'shared/youtube_search_form' %>
-        <%= render 'shared/video_filter_form' %>
-        <%= render 'shared/feed' %>
+<% if signed_in? %>
+  <%= render 'shared/youtube_search_form' %>
+  <%= render 'shared/video_filter_form' %>
+  <%= render 'shared/feed' %>
+<% else %>
+  <div class="row">
+    <div class="small-12 columns text-center">
+      <h1><%= image_tag('logo_black.png', size: "300") %></h1>
+      <%= link_to ("/auth/facebook?display=popup&scope=user_friends") do %>
+        <span id="sign_in" class="fi-social-facebook fi-medium button medium round"> Login</span>
+      <% end %>
     </div>
-  <% else %>
-    <div class="row">
-      <div class="large-12 medium-12 columns text-center">
-        <h1><%= image_tag('logo_black.png', size: "300") %></h1>
-        <%= link_to ("/auth/facebook?display=popup&scope=user_friends") do %>
-          <span id="sign_in" class="fi-social-facebook fi-medium button medium round"> Login</span>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
