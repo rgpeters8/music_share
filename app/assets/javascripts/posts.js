@@ -2,7 +2,7 @@ function play(youtubeID, postID) {
 	var params = {allowScriptAccess: 'always', allowfullscreen: 'true'};
 	var div = "video_" + postID;
 
-   $.post("posts/increment_play_count", 
+   $.post("/posts/increment_play_count", 
       { 
          post_id: postID 
       }, 
@@ -15,7 +15,6 @@ function play(youtubeID, postID) {
    
    // If user is on mobiel device, do not autoplay video
    if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
-      alert("Desktop!");
       url += "&autoplay=1";        
    }
 	
