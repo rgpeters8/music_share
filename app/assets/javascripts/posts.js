@@ -10,9 +10,17 @@ function play(youtubeID, postID) {
          $("#play_count_" + postID).text(data);
       }
    );
+
+   var url = "https://www.youtube.com/v/" + youtubeID + "?enablejsapi=1&playerapiid=ytplayer&version=3";
+   
+   // If user is on mobiel device, do not autoplay video
+   if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+      alert("Desktop!");
+      url += "&autoplay=1";        
+   }
 	
 	$("#video_" + postID + "_container").slideDown(function(e) {
-		swfobject.embedSWF("https://www.youtube.com/v/" + youtubeID + "?enablejsapi=1&playerapiid=ytplayer&version=3&autoplay=1",
+		swfobject.embedSWF(url,
 	    		div, "640", "390", "8", null, null, params, null);
 	});	
 }
