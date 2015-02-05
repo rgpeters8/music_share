@@ -41,7 +41,9 @@ function play(youtubeID, postID) {
                         events: {
                            'onReady': function (event) {
                               container.slideDown(function() {
-                                 event.target.playVideo();
+                                 if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+                                    event.target.playVideo();
+                                 }
                               }) 
                            }
                         }
