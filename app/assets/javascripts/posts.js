@@ -31,23 +31,22 @@ function play(youtubeID, postID) {
 
 
    var divID = "video_" + postID;
-   $('#' + divID).slideDown();
+   var container = $("#" + divID  + "_container");
 
    // 3. This function creates an <iframe> (and YouTube player)
    var player = new YT.Player(divID, {
+                        videoId: youtubeID,
                         height: '390',
                         width: '640',
-                        videoId: youtubeID,
                         events: {
-                           'onReady': onPlayerReady
+                           'onReady': function (event) {
+                              container.slideDown(function() {
+                                 event.target.playVideo();
+                              }) 
+                           }
                         }
                     });
 
-}
-
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-   event.target.playVideo();   
 }
 
 function vote(postID) {
